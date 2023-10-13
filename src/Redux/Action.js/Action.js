@@ -1,7 +1,7 @@
-import { FETCH_CATEGORY_FAILIOR, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_PRODUCT_FAILIOR, FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, SET_CURRENT_CATEGORY } from "../ConstantType/ConstantType"
+import { ADD_TO_CART, DECREACE_QUANTITY_OF_PRODUCT, FETCH_CATEGORY_FAILIOR, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_PRODUCT_FAILIOR, FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, INCREACE_QUANTITY_OF_PRODUCT, REMOVE_FROM_CART, SET_CURRENT_CATEGORY } from "../ConstantType/ConstantType"
 import axios from "axios"
 
-// CATEFORY ACTIONS
+// CATEFORY ACTIONS  
 
 const Fetch_category_request = ()=>{
     return{type:FETCH_CATEGORY_REQUEST}
@@ -31,7 +31,7 @@ export const set_category = (category)=>{
     return {type:SET_CURRENT_CATEGORY,payload:category}
 }
 
-// CATEFORY ACTIONS
+// Product ACTIONS 
 
 const Fetch_product_request = ()=>{
     return{type:FETCH_PRODUCT_REQUEST}
@@ -49,10 +49,26 @@ export const fetch_product = ()=>{
         var p = axios.get('https://dummyjson.com/products');
         p.then((response)=>{
             var data = response.data.products; 
+            console.log(data)
             dispatch(Fetch_product_success(data))           
         },(error)=>{
             var err = error.massage
             dispatch(Fetch_product_failior(err)) 
         });
     }
+}
+
+// CART ACTIONS 
+
+export const add_cart = (p)=>{
+    return {type:ADD_TO_CART,payload:p}
+}
+export const remove_cart = (p)=>{
+    return {type:REMOVE_FROM_CART,payload:p}
+}
+export const increase_quantity = (p)=>{
+    return {type:INCREACE_QUANTITY_OF_PRODUCT,payload:p}
+}
+export const decrease_quantity = (p)=>{
+    return {type:DECREACE_QUANTITY_OF_PRODUCT,payload:p}
 }

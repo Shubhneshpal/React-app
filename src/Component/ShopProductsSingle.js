@@ -1,13 +1,14 @@
 import React from 'react'
 import { getAfterDiscount } from './BLL/Utility'
-import { useDispatch } from "react-redux"
 import { add_cart } from '../Redux/Action.js/Action'
+import { useDispatch } from 'react-redux'
 
-function FeaturedProductsSingle(props) {
-  var dispatch = useDispatch()
+function ShopProductsSingle(props) {
+  var dispatch = useDispatch();
+
   return (
     <>
-      <div className="col-lg-3 col-md-4 col-sm-6 pb-1">
+      <div className="col-lg-4 col-md-6 col-sm-6 pb-1">
   <div className="product-item bg-light mb-4">
     <div className="product-img position-relative overflow-hidden">
       <img className="img-fluid w-100" src={props.products.thumbnail} alt="" />
@@ -57,6 +58,6 @@ function FeaturedProductsSingle(props) {
   )
 }
 
-export default FeaturedProductsSingle
+export default ShopProductsSingle
 
 

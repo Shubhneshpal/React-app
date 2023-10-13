@@ -1,4 +1,5 @@
-import { FETCH_CATEGORY_FAILIOR, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_PRODUCT_FAILIOR, FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, SET_CURRENT_CATEGORY } from "../ConstantType/ConstantType"
+import { addToCart, decreaseProductQuantity, increaseProductQuantity, removeFromCart } from "../../Component/BLL/Utility"
+import { ADD_TO_CART, DECREACE_QUANTITY_OF_PRODUCT, FETCH_CATEGORY_FAILIOR, FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_SUCCESS, FETCH_PRODUCT_FAILIOR, FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, INCREACE_QUANTITY_OF_PRODUCT, REMOVE_FROM_CART, SET_CURRENT_CATEGORY } from "../ConstantType/ConstantType"
 
 const initial_state = {
     loading_category:false,
@@ -8,6 +9,7 @@ const initial_state = {
     loading_product:false,
     data_product:[],
     error_product:'',
+    cart: [],
 }
 
 export const reducer = (state = initial_state, action)=>{
@@ -26,6 +28,21 @@ export const reducer = (state = initial_state, action)=>{
         return {...state,loading_product:false,data_product:action.payload}
     }else if(action.type==FETCH_PRODUCT_FAILIOR){
         return {...state,loading_product:false,error_product:action.payload}
+    }else if(action.type==ADD_TO_CART){
+        addToCart(action.payload,state.cart)
+        return {...state,cart:[...state.cart]}
+
+    }else if(action.type==REMOVE_FROM_CART){
+        removeFromCart(action.payload,state.cart)
+        return {...state,cart:[...state.cart]}
+    }else if(action.type==INCREACE_QUANTITY_OF_PRODUCT){
+        increaseProductQuantity(action.payload,state.cart)
+        return {...state,cart:[...state.cart]}
+        
+    }else if(action.type==DECREACE_QUANTITY_OF_PRODUCT){
+        decreaseProductQuantity(action.payload,state.cart)
+        return {...state,cart:[...state.cart]}
+        
     }
     else{
         return state;

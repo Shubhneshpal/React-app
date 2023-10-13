@@ -9,6 +9,7 @@ function Navbar() {
   var arr_category = useSelector((state)=>state.data_category)
   var error = useSelector((state)=>state.error_category)
   var category = useSelector((state)=>state.current_category)
+  var cart = useSelector((state)=>state.cart)
   var dispatch = useDispatch();
 
 
@@ -126,7 +127,7 @@ function Navbar() {
                   className="badge text-secondary border border-secondary rounded-circle"
                   style={{ paddingBottom: 2 }}
                 >
-                  0
+                  {cart.length}
                 </span>
               </a>
             </div>

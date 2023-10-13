@@ -14,14 +14,6 @@ import Help from './pages/Help';
 import Faq from './pages/Faq';
 import Shop_Detals from './pages/Shop_Detals';
 
-
-
-
-
-
-
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

@@ -9,10 +9,7 @@ function FeaturedProducts() {
     var arr_product = useSelector((state)=>state.data_product)
     var error = useSelector((state)=>state.error_product)
     var category = useSelector((state)=>state.current_category)
-    var dispatch = useDispatch();
-  
-  console.log(arr_product)
-  console.log(arr_product.category)
+    var dispatch = useDispatch();  
   
     useEffect(()=>{   
       if(arr_product.length==0) {
@@ -21,6 +18,7 @@ function FeaturedProducts() {
        
      
     },[]);
+    
     var arr_p_byCategory = [];
     if(category!=0){
       arr_p_byCategory = arr_product.filter(e=>e.category.toUpperCase()==category.toUpperCase())
@@ -32,7 +30,7 @@ function FeaturedProducts() {
       )
     }else if(arr_product.length !=0){
       return (
-        <>
+      
           <>
       {/* Products Start */}
       <div className="container-fluid pt-5 pb-3">
@@ -48,7 +46,7 @@ function FeaturedProducts() {
       {/* Products End */}
     </>
     
-        </>
+        
       )
     }else{
       return(
